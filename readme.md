@@ -3,9 +3,11 @@
 This project is developed using Nest for frontend and Next for backend, integrating the Stable Diffusion Control Net model for AI Interior Design. The project includes functions such as interior design based on customer's desired style, materials, colors, sketches, and text-to-interior design conversion.
 
 ## Technologies Used
-- Frontend: Nest
-- Backend: Next
+- Frontend: Next
+- Backend: Nest
 - AI Model: Stable Diffusion Control Net
+- AWS
+- Docker
 ## Features
 Interior Design Creation: Design interiors with customer's desired style, materials, colors, and sketches.
 Customer Preferences: Customize designs based on customer input.
