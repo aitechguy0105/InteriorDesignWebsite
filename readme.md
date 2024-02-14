@@ -24,5 +24,5 @@ Explore interior design functionalities to create personalized designs.
 
 ## Contact
 
-For support or inquiries related to this project, please contact yan.pliuta.navy@gmail.com
+For support or inquiries related to this project, please leave a issues
 Thank you for using our AI Interior Design application!
