@@ -46,7 +46,7 @@ export class GenerateImageController {
   @Post('restyle')
   @UseGuards(AccessTokenGuard)
   @ApiBearerAuth()
-    @ApiCreatedResponse({ type: GenerateImageEntity })
+  @ApiCreatedResponse({ type: GenerateImageEntity })
   async createRestyle(@Body() generateRestyleDto: GenerateRestyleDto) {
     if (generateRestyleDto.originType == 'sketch2img') {
       const bodyInfo = JSON.stringify({
@@ -57,8 +57,8 @@ export class GenerateImageController {
         auto_hint: 'yes',
         guess_mode: 'no',
         prompt:
-          'modern interior design, photorealistic image, realistic textures, real,  natural color, stylish design, ultra high resolution, 4K image',
-        negative_prompt: 'sketch',
+          'make the wonderful interior image in modern style from this sketch, photorealistic image, emphasizing natural light coming through the windows, adding realistic textures to the sofa and wooden floor, and enhancing the overall look to make it appear as a real, lived-in space, bright color, stylish design, ultra high resolution, 4K image',
+        negative_prompt: 'such as sketch, dark color',
         init_image: generateRestyleDto.baseUrl,
         mask_image: null,
         width: '512',
@@ -76,7 +76,7 @@ export class GenerateImageController {
         vae: null,
         lora_strength: null,
         embeddings_model: null,
-        seed: null,
+        seed: 123423,
         webhook: null,
         track_id: null,
       });
