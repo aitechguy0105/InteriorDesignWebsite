@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { PaintBoard } from 'src/views/utils/paintBoard'
 import { CANVAS_ELE_TYPE } from 'src/views/utils/constants'
 import { useSpaceEvent } from 'src/hooks/event'

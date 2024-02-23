@@ -1,3 +1,4 @@
+//@ts-nocheck
 import { useState } from 'react'
 
 // ** React Imports
@@ -154,6 +155,7 @@ const ShowResult = ({
           <Typography variant='h6'>新しいデザインの作成</Typography>
         )}
       </ImageList>
+
       <SwiperModal open={openswiper} setOpen={setOpenSwiper} images={itemArray} initShow={initShow} />
     </>
   )

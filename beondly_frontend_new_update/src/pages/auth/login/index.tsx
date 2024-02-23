@@ -100,17 +100,22 @@ const LoginPage = () => {
   const onSubmit = (data: FormData) => {
     const { email, password } = data
     auth.login({ email, password, rememberMe }, (err) => {
+      //@ts-ignore
       if(err.response.data.type == "password"){
         setError('password', {
           type: 'manual',
+          //@ts-ignore
           message: err.response.data.msg
         })
+        //@ts-ignore
       } else if(err.response.data.type == "email"){
         setError('email', {
           type: 'manual',
+          //@ts-ignore
           message: err.response.data.msg
         })
       }
+    
     })
   }
 
@@ -152,7 +157,7 @@ const LoginPage = () => {
                   fontWeight: 700,
                   fontSize: '2rem !important',
                   color: 'white'
-                }}s
+                }}
               >
                 {themeConfig.templateName}
               </Typography>

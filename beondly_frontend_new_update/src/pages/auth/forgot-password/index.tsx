@@ -120,7 +120,7 @@ const ForgotPassword = () => {
                   fontWeight: 700,
                   fontSize: '2rem !important',
                   color: 'white'
-                }}s
+                }}
               >
                 {themeConfig.templateName}
               </Typography>

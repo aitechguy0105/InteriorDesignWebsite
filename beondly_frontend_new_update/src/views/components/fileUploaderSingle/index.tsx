@@ -45,6 +45,7 @@ const FileuploadSingle = ({
     // }
     if (fileObj && fileObj.size > 10000000) {
       toast.error('サイズが10M以上は駄目です。')
+      
       return false
     }
 
