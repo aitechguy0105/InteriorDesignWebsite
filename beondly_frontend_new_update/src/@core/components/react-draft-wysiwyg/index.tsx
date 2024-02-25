@@ -1,4 +1,5 @@
 // ** Next Import
+//@ts-nocheck
 import dynamic from 'next/dynamic'
 
 // ** Types

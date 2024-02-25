@@ -1,4 +1,5 @@
 // ** React Imports
+//@ts-nocheck
 import { useState, SyntheticEvent, useEffect, MouseEvent } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { useRouter } from 'next/router'

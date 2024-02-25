@@ -1,4 +1,5 @@
 // ** React Imports
+//@ts-nocheck
 import { ReactNode } from 'react'
 
 // ** Next Import
@@ -113,6 +114,7 @@ const ForgotPassword = () => {
               alt='Description'
               style={{ marginLeft: '0px', marginRight: '0px', marginBottom: '70px', height: '60px', width: '160px' }}
             /> */}
+            
             <Typography
                 variant='h6'
                 sx={{

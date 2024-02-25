@@ -5,9 +5,16 @@ import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
 import { ValidationPipe, ClassSerializerInterceptor } from '@nestjs/common';
 import { PrismaClientExceptionFilter } from './prisma-client-exception.filter';
 import { Logger } from 'nestjs-pino';
-
+import { readFileSync } from 'fs';
+import { join } from 'path';
 async function bootstrap() {
-  const app = await NestFactory.create(AppModule, { bufferLogs: true });
+
+  const httpsOptions = {
+    key: readFileSync(join(__dirname, '../../cert/privkey1.pem')),
+    cert: readFileSync(join(__dirname, '../../cert/fullchain1.pem')),
+  };
+  //const app = await NestFactory.create(AppModule, { bufferLogs: true });
+  const app = await NestFactory.create(AppModule, { httpsOptions });
   app.setGlobalPrefix('api', {
     exclude: ['/'],
   });
@@ -32,8 +39,8 @@ async function bootstrap() {
   // app.enableCors({
   //   origin: /https?:\/\/(([^/]+\.)?example\.com)$/i,
   // });
-  const port = process.env.PORT;
+  const port = process.env.PORT || 8080;
   await app.listen(port);
-  console.log(`backend server is running:${port}`);
+  console.log(`Server is running : ${port}`);
 }
 bootstrap();

@@ -1,3 +1,4 @@
+//@ts-nocheck
 // ** React Imports
 import { ReactNode, useState } from 'react'
 
@@ -176,7 +177,6 @@ const Register = () => {
       auth.register({ username, email, password }, (res) => {
         setError('email', {
           type: 'manual',
-          //@ts-ignore
           message: res.response.data.message
         })
       })

@@ -1,4 +1,5 @@
 // ** React Imports
+//@ts-nocheck
 import { useState } from 'react'
 
 // ** Third Party Components

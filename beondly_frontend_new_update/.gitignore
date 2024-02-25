@@ -37,3 +37,4 @@ yarn-error.log*
 
 # package
 package-lock.json
+certificates
