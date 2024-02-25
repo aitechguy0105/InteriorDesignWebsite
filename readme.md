@@ -17,8 +17,8 @@ Clone the project repository from (https://github.com/aitechguy0105/InteriorDesi
 Install necessary dependencies for frontend and backend using npm or yarn.
 Set up the Stable Diffusion Control Net model for AI Interior Design following provided instructions.
 ## How to Start
-start backend_start.bat
-start frontend_start.bat
+- start backend_start.bat
+- start frontend_start.bat
 ## Usage
 Start the backend server using Next.
 Launch the frontend application with Nest.
