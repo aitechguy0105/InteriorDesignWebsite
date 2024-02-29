@@ -57,7 +57,7 @@ export class GenerateImageController {
         auto_hint: 'yes',
         guess_mode: 'no',
         prompt:
-          'modern interior design, photorealistic image, realistic textures, real,  natural color, stylish design, ultra high resolution, 4K image',
+        generateRestyleDto.prompt + 'modern interior design, photorealistic image, realistic textures, real,  natural color, stylish design, ultra high resolution, 4K image',
         negative_prompt: 'sketch',
         init_image: generateRestyleDto.baseUrl,
         mask_image: null,
@@ -471,11 +471,11 @@ export class GenerateImageController {
     const bodyInfo = JSON.stringify({
       key: process.env.STABLE_DEFISSION_API_KEY,
       prompt:
-        generateStagingDto.prompt + ' ((High definition)), ((High resolution))',
+        generateStagingDto.prompt + ' ((High definition)), ((High resolution)), photorealistic 3D, 4k, ',
       // controlnet_model: 'inpaint',
       // controlnet_type: 'inpaint',
       negative_prompt:
-        '((out of frame)), ((extra fingers)),((peaple)),((person)), (((woman))), (((man))), mutated hands, ((poorly drawn hands)), ((poorly drawn face)), (((mutation))), (((deformed))), (((tiling))), ((naked)), ((tile)), ((fleshpile)), ((ugly)), (((abstract))), blurry, ((bad anatomy)), ((bad proportions)), ((extra limbs)), cloned face, (((skinny))), glitchy, ((extra breasts)), ((double torso)), ((extra arms)), ((extra hands)), ((mangled fingers)), ((missing breasts)), (missing lips), ((ugly face)), ((fat)), ((extra legs)), ((anime)), (((broken fan))), (((broken lamp))), ((ideal floor slab)), (((Curtains in the wrong place))), (child:1.5), ((((underage)))), ((((child)))), (((kid))), (((preteen))), (((person))), (teen:1.5) ugly, tiling, poorly drawn hands, poorly drawn feet, poorly drawn face, out of frame, extra limbs, disfigured, deformed, body out of frame, bad anatomy, watermark, signature, cut off, low contrast, underexposed, overexposed, bad art, beginner, amateur, distorted face, blurry, draft, grainy',
+        'sketch, ((out of frame)), ((extra fingers)),((peaple)),((person)), (((woman))), (((man))), mutated hands, ((poorly drawn hands)), ((poorly drawn face)), (((mutation))), (((deformed))), (((tiling))), ((naked)), ((tile)), ((fleshpile)), ((ugly)), (((abstract))), blurry, ((bad anatomy)), ((bad proportions)), ((extra limbs)), cloned face, (((skinny))), glitchy, ((extra breasts)), ((double torso)), ((extra arms)), ((extra hands)), ((mangled fingers)), ((missing breasts)), (missing lips), ((ugly face)), ((fat)), ((extra legs)), ((anime)), (((broken fan))), (((broken lamp))), ((ideal floor slab)), (((Curtains in the wrong place))), (child:1.5), ((((underage)))), ((((child)))), (((kid))), (((preteen))), (((person))), (teen:1.5) ugly, tiling, poorly drawn hands, poorly drawn feet, poorly drawn face, out of frame, extra limbs, disfigured, deformed, body out of frame, bad anatomy, watermark, signature, cut off, low contrast, underexposed, overexposed, bad art, beginner, amateur, distorted face, blurry, draft, grainy',
       // model_id: 'midjourney-v4-painta',
       multi_lingual: null,
       guidance: 7.5,
