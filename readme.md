@@ -1,7 +1,7 @@
 # Interior Design
 ## Project Overview
 This project is developed using Nest for frontend and Next for backend, integrating the Stable Diffusion Control Net model for AI Interior Design. The project includes functions such as interior design based on customer's desired style, materials, colors, sketches, and text-to-interior design conversion.
-
+You could visit https://joinbuiltdesign.com
 ## Technologies Used
 - Frontend: Next
 - Backend: Nest
@@ -16,6 +16,9 @@ Text-to-Interior Design: Generate interior designs from text inputs.
 Clone the project repository from (https://github.com/aitechguy0105/InteriorDesignWebsite.git).
 Install necessary dependencies for frontend and backend using npm or yarn.
 Set up the Stable Diffusion Control Net model for AI Interior Design following provided instructions.
+## How to Start
+- start backend_start.bat
+- start frontend_start.bat
 ## Usage
 Start the backend server using Next.
 Launch the frontend application with Nest.

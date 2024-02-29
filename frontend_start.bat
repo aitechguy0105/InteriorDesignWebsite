@@ -1,0 +1,1 @@
+cd beondly_frontend_new_update & npm start

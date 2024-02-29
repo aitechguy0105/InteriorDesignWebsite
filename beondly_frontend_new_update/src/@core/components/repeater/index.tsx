@@ -1,4 +1,5 @@
 // ** Types
+//@ts-nocheck
 import { RepeaterProps } from './types'
 
 const Repeater = (props: RepeaterProps) => {

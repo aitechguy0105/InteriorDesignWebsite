@@ -41,6 +41,8 @@ const generateRestyleImage = async (
       url: url,
       originType: originType
     })
+    console.log('generate-restyle-image')
+    console.log(data)
     const config = {
       method: 'post',
       url: api.API + api.generateRestyleEndpoint,
@@ -126,7 +128,8 @@ const generateStagingImage = async (
       width: width,
       height: height
     })
-
+    console.log('generate-stage')
+    console.log(data)
     const config = {
       method: 'post',
       url: api.API + api.generateStagingEndpoint,

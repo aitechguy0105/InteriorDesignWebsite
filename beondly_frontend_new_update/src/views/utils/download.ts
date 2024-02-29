@@ -1,3 +1,4 @@
+//@ts-nocheck
 import AWS from 'aws-sdk'
 import { downloadProject } from 'src/pages/api/myProjectService'
 

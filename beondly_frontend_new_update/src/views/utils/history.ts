@@ -1,4 +1,3 @@
-//@ts-nocheck
 import { ELEMENT_INSTANCE } from 'src/context/PaintTypes'
 import { cloneDeep } from 'lodash'
 import { at, compareVersion } from './common'

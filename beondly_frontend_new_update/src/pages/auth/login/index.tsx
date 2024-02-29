@@ -1,4 +1,5 @@
 // ** React Imports
+//@ts-nocheck
 import { useState, ReactNode } from 'react'
 
 // ** Next Imports
@@ -100,22 +101,18 @@ const LoginPage = () => {
   const onSubmit = (data: FormData) => {
     const { email, password } = data
     auth.login({ email, password, rememberMe }, (err) => {
-      //@ts-ignore
+      console.log(err)
       if(err.response.data.type == "password"){
         setError('password', {
           type: 'manual',
-          //@ts-ignore
           message: err.response.data.msg
         })
-        //@ts-ignore
       } else if(err.response.data.type == "email"){
         setError('email', {
           type: 'manual',
-          //@ts-ignore
           message: err.response.data.msg
         })
       }
-    
     })
   }
 

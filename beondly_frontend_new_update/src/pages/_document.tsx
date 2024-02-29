@@ -1,4 +1,5 @@
 // ** React Import
+//@ts-nocheck
 import { Children } from 'react'
 
 // ** Next Import
@@ -42,6 +43,7 @@ CustomDocument.getInitialProps = async ctx => {
     originalRenderPage({
       enhanceApp: App => props =>
         (
+          // @ts-ignore
           <App
             {...props} // @ts-ignore
             emotionCache={cache}

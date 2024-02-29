@@ -1,3 +1,4 @@
+//@ts-nocheck
 import { useState, useEffect, useRef } from 'react'
 
 import { ProjectInterface } from 'src/context/types'

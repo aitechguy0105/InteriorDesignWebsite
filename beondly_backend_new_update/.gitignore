@@ -1,10 +1,11 @@
 # compiled output
 /dist
 /node_modules
-
+/cert
 # Logs
 logs
 *.log
+*pem
 npm-debug.log*
 pnpm-debug.log*
 yarn-debug.log*

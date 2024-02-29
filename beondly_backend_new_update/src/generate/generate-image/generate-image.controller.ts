@@ -51,14 +51,14 @@ export class GenerateImageController {
     if (generateRestyleDto.originType == 'sketch2img') {
       const bodyInfo = JSON.stringify({
         key: process.env.STABLE_DEFISSION_API_KEY,
-        controlnet_model: 'canny',
-        controlnet_type: 'canny',
-        model_id: 'midjourney',
+        controlnet_model: 'scribble',
+        controlnet_type: 'scribble',
+        model_id: 'interiordesignsuperm',
         auto_hint: 'yes',
         guess_mode: 'no',
         prompt:
-          'make the wonderful interior image in modern style from this sketch, photorealistic image, emphasizing natural light coming through the windows, adding realistic textures to the sofa and wooden floor, and enhancing the overall look to make it appear as a real, lived-in space, bright color, stylish design, ultra high resolution, 4K image',
-        negative_prompt: 'such as sketch, dark color',
+          'modern interior design, photorealistic image, realistic textures, real,  natural color, stylish design, ultra high resolution, 4K image',
+        negative_prompt: 'sketch',
         init_image: generateRestyleDto.baseUrl,
         mask_image: null,
         width: '512',
