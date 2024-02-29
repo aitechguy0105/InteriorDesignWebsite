@@ -50,7 +50,7 @@ import { tr } from 'date-fns/locale'
 // import { addAPIProvider } from '@iconify/react'
 
 const floorItems = initial_data['floor']
-console.log('flooriTems', floorItems)
+// console.log('flooriTems', floorItems)
 const colorItems = initial_data['color']
 const materialItems = initial_data['material']
 
@@ -187,7 +187,7 @@ const Input = ({
     checkLogin()
     if (newAlignment !== null) {
       setPaintState(newAlignment)
-      console.log(paintState)
+      console.log("new paint state:" + newAlignment)
     }
   }
   const [methodValue, setMethodValue] = useState('img2img')
@@ -223,7 +223,7 @@ const Input = ({
 
   useEffect(() => {
     if (genRoom) {
-      console.log('generateroom')
+      console.log('paintState when generateroom ', paintState)
       GenerateRoom()
     }
     console.log('genroom', genRoom)
@@ -252,7 +252,7 @@ const Input = ({
             setLoading(false)
           })
       } else {
-        if (paintState) {
+        if (!paintState) {
           const res = uploadNoneMask(width, height)
           res
             .then(({ data }: any) => {
@@ -416,7 +416,7 @@ const Input = ({
   }
 
   const generateStaging = async () => {
-    console.log('paintStata', paintState)
+    console.log('paintState in api sending point of view: ', paintState)
     console.log('uploadImageLink', uploadImageLink)
     console.log('upLoadMaskLink', upLoadMaskLink)
 
@@ -581,10 +581,10 @@ const Input = ({
             aria-label='text alignment'
             fullWidth
           >
-            <ToggleButton value={false} aria-label='redesign'>
+            <ToggleButton value={false} aria-label='staging'>
               <Typography sx={{ fontWeight: 500 }}>ステージングプロ</Typography>
             </ToggleButton>
-            <ToggleButton value={true} aria-label='staging'>
+            <ToggleButton value={true} aria-label='redesign'>
               <Typography sx={{ fontWeight: 500 }}>Re-デザイン</Typography>
             </ToggleButton>
           </ToggleButtonGroup>
