@@ -1,0 +1,263 @@
+{
+  "color": [
+    {
+      "title": "ホワイト",
+      "value": "white",
+      "image": "/images/styles/color/white.png"
+    },
+    {
+      "title": "ブラック",
+      "value": "black",
+      "image": "/images/styles/color/black.png"
+    },
+    {
+      "title": "レッド",
+      "value": "red",
+      "image": "/images/styles/color/red.png"
+    },
+    {
+      "title": "オレンジ",
+      "value": "orange",
+      "image": "/images/styles/color/orange.png"
+    },
+    {
+      "title": "グリーン",
+      "value": "green",
+      "image": "/images/styles/color/green.png"
+    },
+    {
+      "title": "イエロー",
+      "value": "yellow",
+      "image": "/images/styles/color/yellow.png"
+    },
+    {
+      "title": "ブロンズ",
+      "value": "bronze",
+      "image": "/images/styles/color/bronze.png"
+    },
+    {
+      "title": "シルバー",
+      "value": "silver",
+      "image": "/images/styles/color/silver.png"
+    },
+    {
+      "title": "ネイビー",
+      "value": "navy",
+      "image": "/images/styles/color/navy.png"
+    },
+    {
+      "title": "ピンク",
+      "value": "pink",
+      "image": "/images/styles/color/pink.png"
+    },
+    {
+      "title": "ターコイズ",
+      "value": "turquoise",
+      "image": "/images/styles/color/turkish.png"
+    },
+    {
+      "title": "モスグリーン",
+      "value": "moss green",
+      "image": "/images/styles/color/mosgreen.png"
+    },
+    {
+      "title": "グレー",
+      "value": "grey",
+      "image": "/images/styles/color/grey.png"
+    },
+    {
+      "title": "ベージュ",
+      "value": "turquoise",
+      "image": "/images/styles/color/basic.png"
+    },
+    {
+      "title": "ダークブラウン",
+      "value": "beige",
+      "image": "/images/styles/color/darkbrown.png"
+    },
+    {
+      "title": "ブラウン",
+      "value": "brown",
+      "image": "/images/styles/color/brown.png"
+    },
+    {
+      "title": "パープル",
+      "value": "purple",
+      "image": "/images/styles/color/purple.png"
+    }
+  ],
+  "floor": [
+    {
+      "title": "チーク",
+      "value": "teak floor",
+      "image": "/images/styles/floor/teak.jpg"
+    },
+    {
+      "title": "オーク",
+      "value": "oak floor",
+      "image": "/images/styles/floor/oak.jpg"
+    },
+    {
+      "title": "パイン",
+      "value": "pine floor",
+      "image": "/images/styles/floor/pine.jpg"
+    },
+    {
+      "title": "ウォールナッツ",
+      "value": "walnut floor",
+      "image": "/images/styles/floor/walnut.jpg"
+    },
+    {
+      "title": "バーチ(カバ)",
+      "value": "birch floor",
+      "image": "/images/styles/floor/birch.jpg"
+    },
+    {
+      "title": "マホガニー",
+      "value": "mahogany floor",
+      "image": "/images/styles/floor/mahogany.jpg"
+    },
+    {
+      "title": "サベリ",
+      "value": "saberi floor",
+      "image": "/images/styles/floor/Saberi.jpg"
+    },
+    {
+      "title": "カリン",
+      "value": "karin floor",
+      "image": "/images/styles/floor/karin.jpg"
+    },
+    {
+      "title": "ピンカド",
+      "value": "pinkad floor",
+      "image": "/images/styles/floor/pinkad.jpg"
+    },
+    {
+      "title": "メープル",
+      "value": "maple floor",
+      "image": "/images/styles/floor/maple.jpg"
+    },
+    {
+      "title": "メルバウ",
+      "value": "merbau floor",
+      "image": "/images/styles/floor/Merbau.jpg"
+    },
+    {
+      "title": "竹",
+      "value": "bamboo floor",
+      "image": "/images/styles/floor/bamboo_wood.jpg"
+    },
+    {
+      "title": "桐",
+      "value": "paulownia floor",
+      "image": "/images/styles/floor/Paulownia.jpg"
+    },
+    {
+      "title": "レッドシダー",
+      "value": "red cedar floor",
+      "image": "/images/styles/floor/red cedar.jpg"
+    },
+    {
+      "title": "レッドウッド",
+      "value": "redwood floor",
+      "image": "/images/styles/floor/redwood.jpg"
+    },
+    {
+      "title": "国産杉",
+      "value": "cedar_wood floor",
+      "image": "/images/styles/floor/Cedar_wood.jpg"
+    },
+    {
+      "title": "柳杉",
+      "value": "willow cedar floor",
+      "image": "/images/styles/floor/Willow cedar.jpg"
+    },
+    {
+      "title": "古材",
+      "value": "old_wood floor",
+      "image": "/images/styles/floor/furuzai.jpg"
+    },
+    {
+      "title": "その他",
+      "value": "other_wood floor",
+      "image": "/images/styles/floor/other_wood.jpg"
+    }
+  ],
+  "material": [
+    {
+      "title": "レンガ",
+      "value": "brick material",
+      "image": "/images/styles/material/brick.jpg"
+    },
+    {
+      "title": "石材",
+      "value": "stone material",
+      "image": "/images/styles/material/stone.jpg"
+    },
+    {
+      "title": "木材",
+      "value": "wood material",
+      "image": "/images/styles/material/wood2.jpg"
+    },
+    {
+      "title": "塩化ビニル",
+      "value": "vinyle sidding material",
+      "image": "/images/styles/material/vinyle sidding.jpg"
+    },
+    {
+      "title": "セメント",
+      "value": "stucco material",
+      "image": "/images/styles/material/stucco.jpg"
+    },
+    {
+      "title": "コンクリート",
+      "value": "concrete material",
+      "image": "/images/styles/material/concreate.jpg"
+    },
+    {
+      "title": "アルミニウム",
+      "value": "aluminium material",
+      "image": "/images/styles/material/aluminium.jpg"
+    },
+    {
+      "title": "竹材",
+      "value": "bamboo material",
+      "image": "/images/styles/material/bamboo.jpg"
+    },
+    {
+      "title": "大理石",
+      "value": "marble material",
+      "image": "/images/styles/material/marble.jpg"
+    },
+    {
+      "title": "花崗岩",
+      "value": "granite material",
+      "image": "/images/styles/material/granite.jpg"
+    },
+    {
+      "title": "粘土",
+      "value": "terracotta material",
+      "image": "/images/styles/material/terraccotta.jpg"
+    },
+    {
+      "title": "杉",
+      "value": "cedar material",
+      "image": "/images/styles/material/cedar.jpg"
+    },
+    {
+      "title": "鉄",
+      "value": "iron material",
+      "image": "/images/styles/material/iron.jpg"
+    },
+    {
+      "title": "ポリ塩化ビニル",
+      "value": "pvc material",
+      "image": "/images/styles/material/pvc.jpg"
+    },
+    {
+      "title": "コンポジットウッド",
+      "value": "composite_wood material",
+      "image": "/images/styles/material/composite_wood.jpg"
+    }
+  ]
+}
