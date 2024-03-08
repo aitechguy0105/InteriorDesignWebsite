@@ -111,7 +111,7 @@ const ProjectItemModal = ({
       >
         <Grid sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
           <Grid sx={{ display: 'flex', gap: 2, background: 'none', border: '0px none' }}>
-            <Card sx={{ padding: 0, position: 'relative' }}>
+            <Card sx={{ padding: 0, position: 'relative', width: '50%'}}>
               <Typography
                 sx={{
                   position: 'absolute',
@@ -140,7 +140,7 @@ const ProjectItemModal = ({
                 }}
               />
             </Card>
-            <Card sx={{ padding: 0, position: 'relative' }}>
+            <Card sx={{ padding: 0, position: 'relative', width: '50%' }}>
               <Typography
                 sx={{
                   position: 'absolute',

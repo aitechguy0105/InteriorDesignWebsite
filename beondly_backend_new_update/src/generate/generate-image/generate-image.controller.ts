@@ -107,7 +107,7 @@ export class GenerateImageController {
       
             {
               "key": process.env.STABLE_DEFISSION_API_KEY,
-              "prompt":  generateRestyleDto.prompt + ' ,make the realistic wonderful interior image from this sketch,' + 'bright sunlight, natural light, interior design, photorealistic image, realistic textures, \
+              "prompt":  generateRestyleDto.prompt + ' ,make the realistic wonderful interior 3d image from this sketch,' + 'bright sunlight, natural light, interior design, photorealistic image, realistic textures, \
                   ultra high resolution, 4K image,' + effect_prompts[selected[i]] ,
               "model_id": "interiordesignsuperm",
               "controlnet_model": "scribble",
@@ -133,7 +133,7 @@ export class GenerateImageController {
               "mask_image": null,
               "control_image": null,
               "vae": null,
-              "num_inference_steps":"31",
+              "num_inference_steps":"21",
               "full_url": "no",
               "upscale": 2,
               "samples": 1,
@@ -149,6 +149,7 @@ export class GenerateImageController {
                }
             )
         };
+        
         options_list.push(options)
       }
      
@@ -223,12 +224,12 @@ export class GenerateImageController {
           generateRestyleDto.prompt +
           ' ((High definition)), ((High resolution))',
         negative_prompt:
-          '((out of frame)), ((extra fingers)),((peaple)),((person)), (((woman))), (((man))), mutated hands, ((poorly drawn hands)), ((poorly drawn face)), (((mutation))), (((deformed))), (((tiling))), ((naked)), ((tile)), ((fleshpile)), ((ugly)), (((abstract))), blurry, ((bad anatomy)), ((bad proportions)), ((extra limbs)), cloned face, (((skinny))), glitchy, ((extra breasts)), ((double torso)), ((extra arms)), ((extra hands)), ((mangled fingers)), ((missing breasts)), (missing lips), ((ugly face)), ((fat)), ((extra legs)), ((anime)), (((broken fan))), (((broken lamp))), ((ideal floor slab)), (((Curtains in the wrong place)))',
+          '((out of frame)), ((extra fingers)),((people)),((person)), (((woman))), (((man))), mutated hands, ((poorly drawn hands)), ((poorly drawn face)), (((mutation))), (((deformed))), (((tiling))), ((naked)), ((tile)), ((fleshpile)), ((ugly)), (((abstract))), blurry, ((bad anatomy)), ((bad proportions)), ((extra limbs)), cloned face, (((skinny))), glitchy, ((extra breasts)), ((double torso)), ((extra arms)), ((extra hands)), ((mangled fingers)), ((missing breasts)), (missing lips), ((ugly face)), ((fat)), ((extra legs)), ((anime)), (((broken fan))), (((broken lamp))), ((ideal floor slab)), (((Curtains in the wrong place)))',
         init_image: generateRestyleDto.baseUrl,
         width: '1024',
         height: '1024',
         samples: '3',
-        num_inference_steps: '31',
+        num_inference_steps: '21',
         enhance_prompt: 'no',
         safety_checker: 'yes',
         guidance_scale: 7.7,
@@ -348,20 +349,44 @@ async download_upscale_upload(imageUrls) {
         );
       }
       console.log('------------imageUrl', imageUrl)
+      const fileNameWithExtension = path.basename(imageUrl);
+      const fileNameWithoutExtension = fileNameWithExtension.slice(0, fileNameWithExtension.lastIndexOf('.'));
+
+
+      // relight effect
+ 
+      const url ="https://prodapi.phot.ai/external/api/v2/user_activity/light-fixer-2k";
+      const headers = {
+        "x-api-key": process.env.PHOTAI_API_KEY,
+        "Content-Type": "application/json",
+      };
+      const data = {
+        input_image_link: imageUrl , // Replace with the URL of your input image
+        fileName: fileNameWithExtension,  // Replace with the actual input file name as a string
+      };
+      
+      const relight_response = await axios.post(url, data, { headers });
+      console.log('-----------relight response', relight_response.data);
+      
+      // let obj_2k = JSON.parse(relight_response.data['2k'])
+      // console.log('-----------obj_2k', obj_2k)
+      console.log("----------url: relight_response.data['2k'].url", relight_response.data.data['2k'].url)
+   
+
       var formData = new FormData();
       let res: any;
       console.log('-------send download request')
       const download_response = await axios({
         method: 'get',
-        url: imageUrl,
+        url: relight_response.data.data['2k'].url,
         responseType: 'arraybuffer' // Ensure response is treated as binary data
       })
              // console.log(response.data);
 
       // configure for clipdrop api
-      const fileName = path.basename(imageUrl);
 
-      formData.append('image_file', download_response.data, fileName);
+
+      formData.append('image_file', download_response.data, fileNameWithExtension);
       const sizeOf = require('image-size');
       const dimensions = sizeOf(download_response.data)
       console.log('-------------dimensions', dimensions)
@@ -377,7 +402,7 @@ async download_upscale_upload(imageUrls) {
         maxBodyLength: Infinity,
         url: 'https://clipdrop-api.co/image-upscaling/v1/upscale',
         headers: {
-          'x-api-key': 'b1115d9068cf995de297fb062bf24e8e7604b131dbb195bbd193079441dcc6c6726219523935ae4ee7b9e3287d390bd0',
+          'x-api-key': process.env.CLIPDROP_API_KEY,
           ...formData.getHeaders()
         },
         data: formData,
@@ -385,8 +410,8 @@ async download_upscale_upload(imageUrls) {
       };
         //@ts-ignore
       const clipdrop_response = await axios(config)
-      const fileNameWithoutExtension = fileName.slice(0, fileName.lastIndexOf('.'));
-      const uploadedFilePath = `./upload/upscaled/${fileName}`;
+
+      const uploadedFilePath = `./upload/upscaled/${fileNameWithExtension}`;
         
      
       await fs.writeFile(uploadedFilePath, clipdrop_response.data, 'binary', (err) => {
@@ -395,6 +420,8 @@ async download_upscale_upload(imageUrls) {
           return;
         }
       });
+
+
       console.log('Image saved successfully!');
   
       // upload to s3 bucket
@@ -462,11 +489,12 @@ async download_upscale_upload(imageUrls) {
     if (!generatedData[0]) {
       return { state: false };
     }
-
+    const upscaledImageLinksS3 = await this.download_upscale_upload(generatedData)
+    console.log('----------upscaledImageLinksS3', upscaledImageLinksS3)
     const genInfo = await this.generateImageService.create({
       baseUrl: '',
       prompt: generateByPromptDto.prompt,
-      url: generatedData,
+      url: upscaledImageLinksS3,
       name: uuid(),
       userId: Number(generateByPromptDto.userId),
       method: 'restyle',
@@ -683,9 +711,9 @@ async download_upscale_upload(imageUrls) {
           // "height": generateStagingDto.height.toString(),
           "width": '1024',
           "height": '1024',
-          "prompt": generateStagingDto.prompt + ' ,interior design, photorealistic image, realistic textures, \
+          "prompt": generateStagingDto.prompt + ' ,3d interior design from this sketch, photorealistic image, realistic textures, \
            ultra high resolution, 4K image,' ,
-          "negative_prompt": "sketch",
+          "negative_prompt": "sketch, text",
           "guess_mode": null,
           "use_karras_sigmas": "yes",
           "algorithm_type": null,
@@ -698,9 +726,9 @@ async download_upscale_upload(imageUrls) {
           "instant_response": null,
           "strength": 1,
           "guidance_scale": 7.5,
-          "samples": "1",
+          "samples": "3",
           "safety_checker": null,
-          "num_inference_steps": "30",
+          "num_inference_steps": "21",
           "controlnet_conditioning_scale": 0.4,
           "track_id": null,
           "scheduler": "UniPCMultistepScheduler",
