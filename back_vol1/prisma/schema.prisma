@@ -1,0 +1,140 @@
+// This is your Prisma schema file,
+// learn more about it in the : https://pris.ly/d/prisma-schema
+
+generator client {
+  provider        = "prisma-client-js"
+  previewFeatures = ["fullTextSearch"]
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// user Info
+model User {
+  id            Int             @id @default(autoincrement())
+  name          String?
+  email         String          @unique
+  password      String
+  firstname     String?
+  lastname      String?
+  avatar        String?
+  address       String?
+  phoneNumber   String?
+  payment       String?
+  paymentAmount Int?            @default(0)
+  role          String          @default("client")
+  verifyemail   Boolean         @default(false)
+  verifytoken   String?         @unique
+  refreshtoken  String?
+  status        String          @default("ACTIVE")
+  genNumber     Int?
+  currentPlan   String          @default("free")
+  createdAt     DateTime        @default(now())
+  updatedAt     DateTime        @updatedAt
+  lastlogindate DateTime?
+  articles      Article[]
+  generateImage GenerateImage[]
+  UploadImage   UploadImage[]
+}
+
+// payment
+model Payment {
+  id        Int      @id @default(autoincrement())
+  payMethod String
+  payAmount Int
+  payDate   DateTime @default(now())
+}
+
+model Price {
+  id          Int      @id @default(autoincrement())
+  priceName   String   @unique
+  priceNameJP String?
+  price       Int      @default(10)
+  quantity    Int      @default(1)
+  unit        String   @default("yen")
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Plan {
+  id         Int      @id @default(autoincrement())
+  name       String   @unique
+  planName   String   @default("free")
+  planNameJP String?
+  download   Boolean  @default(false)
+  limit      Int      @default(5)
+  active     Boolean  @default(false)
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+}
+
+model Article {
+  id          Int      @id @default(autoincrement())
+  title       String   @unique
+  description String?
+  body        String
+  published   Boolean  @default(false)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  authorId    Int?
+  author      User?    @relation(fields: [authorId], references: [id])
+}
+
+// generate
+model RoomName {
+  id        Int      @id @default(autoincrement())
+  name      String   @unique
+  jpName    String   @unique
+  prompt    String   @unique
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  // generateImage GenerateImage[]
+}
+
+model BaseImage {
+  id        Int      @id @default(autoincrement())
+  name      String   @unique
+  jpname    String   @unique
+  prompt    String   @unique
+  url       String   @unique
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  // generateImage GenerateImage[]
+}
+
+model Prompt {
+  id            Int      @id @default(autoincrement())
+  name          String   @unique
+  roomNameId    Int
+  designStyleId Int
+  prompt        String
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @default(now())
+}
+
+model UploadImage {
+  id        Int      @id @default(autoincrement())
+  name      String   @unique
+  url       String   @unique
+  createdAt DateTime @default(now())
+  authorId  Int
+  author    User     @relation(fields: [authorId], references: [id])
+}
+
+model GenerateImage {
+  id        Int      @id @default(autoincrement())
+  name      String   @unique @default(uuid())
+  prompt    String
+  userId    Int
+  user      User     @relation(fields: [userId], references: [id])
+  baseUrl   String
+  method    String
+  // baseimageId Int?        
+  // baseimage   BaseImage?  @relation(fields: [baseimageId], references: [id])
+  // roomstyleId Int?        
+  // roomstyle   RoomStyle?  @relation(fields: [roomstyleId], references: [id])
+  url       String[]
+  createdAt DateTime @default(now())
+}
