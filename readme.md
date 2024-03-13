@@ -1,8 +1,8 @@
 # Interior Design
-https://joinbuiltdesign.com
+
 ## Project Overview
 This project is developed using Nest for frontend and Next for backend, integrating the Stable Diffusion Control Net model for AI Interior Design. The project includes functions such as interior design based on customer's desired style, materials, colors, sketches, and text-to-interior design conversion.
-
+[joinbuiltdesign.com](https://joinbuiltdesign.com/).
 
 ## Technologies Used
 - Frontend: Next
